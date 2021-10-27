@@ -5,7 +5,7 @@ setup(
     version="0.0.1",
     py_modules=["cam-control"],
     packages=find_packages(),
-    python_requires="~=3.8",
+    python_requires="~=3.6",
     install_requires=[
         "pytapo",
         "scapy",
