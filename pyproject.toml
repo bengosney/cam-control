@@ -1,0 +1,21 @@
+[project]
+name = "Cam Control"
+version = "0.0.1"
+description = ""
+authors = [
+    "Ben Gosney <bengosney@googlemail.com>"
+]
+python = "^3.8"
+homepage = "https://github.com/bengosney/cam-control/"
+repository = "https://github.com/bengosney/cam-control/"
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.black]
+line-length = 128
+target-version = ['py38']
+
+[tool.pycln]
+all = true
