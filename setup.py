@@ -12,7 +12,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "cam-control = main:main",
+            "cam-control=camcontrol.main:main",
         ],
     },
 )

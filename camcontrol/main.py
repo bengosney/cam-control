@@ -3,7 +3,7 @@ import time
 import scapy.all as scapy
 from pytapo import Tapo
 
-from config import camIPS, camPassword, camUsername, ipRange, macs
+from .config import camIPS, camPassword, camUsername, ipRange, macs
 
 arp_req_frame = scapy.ARP(pdst=ipRange)
 broadcast_frame = scapy.Ether(dst="ff:ff:ff:ff:ff:ff")
