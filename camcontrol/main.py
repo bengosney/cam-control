@@ -1,4 +1,5 @@
 import time
+from datetime import datetime
 
 import scapy.all as scapy
 from pytapo import Tapo
@@ -15,25 +16,31 @@ def checkForPhones():
     return all(a[1].hwsrc not in macs for a in answered_list)
 
 
+def logLine(line):
+    now = datetime.now()
+    date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
+    print(f"{date_time:}: {line}")
+
+
 def main(sleepTime=30):
-    print(f"Checking for {macs}")
+    logLine(f"Checking for {macs}")
     previous = None
 
     while True:
-        print("Checking phones")
+        logLine("Checking phones")
         detectMotion = checkForPhones()
 
         if detectMotion != previous:
-            print("Possible change, checking again")
+            logLine(f"Possible change to {detectMotion}, checking again")
             if checkForPhones() != previous:
-                print(f"Setting motion detection to {detectMotion}")
+                logLine(f"Setting motion detection to {detectMotion}")
                 for camIP in camIPS:
                     tapo = Tapo(camIP, camUsername, camPassword)
                     tapo.setMotionDetection(detectMotion)
 
                 previous = detectMotion
 
-        print("Sleeping...")
+        logLine("Sleeping...")
         time.sleep(sleepTime)
 
 
